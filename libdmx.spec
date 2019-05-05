@@ -6,7 +6,7 @@
 #
 Name     : libdmx
 Version  : 1.1.4
-Release  : 13
+Release  : 14
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libdmx-1.1.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libdmx-1.1.4.tar.gz
 Source99 : http://xorg.freedesktop.org/releases/individual/lib/libdmx-1.1.4.tar.gz.sig
@@ -33,6 +33,7 @@ Summary: dev components for the libdmx package.
 Group: Development
 Requires: libdmx-lib = %{version}-%{release}
 Provides: libdmx-devel = %{version}-%{release}
+Requires: libdmx = %{version}-%{release}
 
 %description dev
 dev components for the libdmx package.
@@ -63,11 +64,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547423869
-export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export SOURCE_DATE_EPOCH=1557077123
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -79,7 +83,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1547423869
+export SOURCE_DATE_EPOCH=1557077123
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libdmx
 cp COPYING %{buildroot}/usr/share/package-licenses/libdmx/COPYING
