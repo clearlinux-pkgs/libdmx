@@ -6,7 +6,7 @@
 #
 Name     : libdmx
 Version  : 1.1.4
-Release  : 14
+Release  : 15
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libdmx-1.1.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libdmx-1.1.4.tar.gz
 Source99 : http://xorg.freedesktop.org/releases/individual/lib/libdmx-1.1.4.tar.gz.sig
